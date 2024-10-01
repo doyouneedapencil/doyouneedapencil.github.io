@@ -1,17 +1,54 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🫨</title>
-    <script>
-        function redirect() {
-            window.location.href = 'https://doyouneedapencil.github.io/slop';
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
         }
-    </script>
+        #typing {
+            font-size: 24px;
+            overflow: hidden;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <p>Do you need a pencil?</p>
-    <button onclick="redirect()">yes</button>
+
+    <div id="typing"></div>
+    <button id="yesButton">yes</button>
+
+    <script>
+        const text = "do you need a pencil?";
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                document.getElementById("typing").textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 100); 
+            }
+        }
+
+        type();
+
+        document.getElementById("yesButton").addEventListener("click", function() {
+            window.location.href = "https://doyouneedapencil.github.io/slop";
+        });
+    </script>
+
 </body>
 </html>
